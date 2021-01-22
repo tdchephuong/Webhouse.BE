@@ -1,4 +1,4 @@
-# cometosite.be rest api
+# webhouse.be rest api
 
 A fairly opinionated starter project for build a REST API with Node/TypeScript/Express.
 
@@ -33,7 +33,7 @@ Take a look under `src/app/api/routes/users` to see the implementation for the `
 
 ```sh
 # change directory to the app
-cd cometosite.BE
+cd webhouse.BE
 
 # install the dependencies
 npm install

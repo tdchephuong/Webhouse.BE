@@ -1,7 +1,7 @@
 version: "3.5"
 services:
-  cometosite:
-    container_name: cometosite
+  webhouse:
+    container_name: webhouse
     build:
       context: .
     ports:

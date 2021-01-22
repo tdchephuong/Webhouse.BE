@@ -1,7 +1,7 @@
 {
-  "name": "cometosite.be",
+  "name": "webhouse.be",
   "version": "0.0.1",
-  "description": "cometosite.be rest api",
+  "description": "webhouse.be rest api",
   "main": "src/app/app.ts",
   "scripts": {
     "clean": "rimraf dist",
