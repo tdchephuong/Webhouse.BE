@@ -1,0 +1,477 @@
+openapi: 3.0.1
+info:
+  title: Come to Site API
+  description: Come to Site Web API using to provide data fro Frontend rendering.
+  contact:
+    name: THDP Group
+    url: https://www.thdpGroup.com
+    email: thdpGroup@gmail.com
+  license:
+    name: Use under LICX
+    url: https://example.com/license
+  version: v1
+servers:
+- url: /
+paths:
+  /api/Themes:
+    get:
+      tags:
+      - Themes
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ThemeModel'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ThemeModel'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ThemeModel'
+  /api/Themes/{categoryId}:
+    get:
+      tags:
+      - Themes
+      parameters:
+      - name: categoryId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ThemeModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ThemeModel'
+components:
+  schemas:
+    CategoryRootCount:
+      type: object
+      properties:
+        key:
+          nullable: true
+        count:
+          type: integer
+          format: int32
+        description:
+          nullable: true
+      additionalProperties: false
+    Category:
+      type: object
+      properties:
+        key:
+          type: string
+          nullable: true
+        count:
+          type: integer
+          format: int32
+        description:
+          nullable: true
+        name:
+          type: string
+          nullable: true
+      additionalProperties: false
+    PlatformRootCount:
+      type: object
+      properties:
+        key:
+          nullable: true
+        count:
+          type: integer
+          format: int32
+        description:
+          nullable: true
+      additionalProperties: false
+    Tag:
+      type: object
+      properties:
+        key:
+          type: string
+          nullable: true
+        count:
+          type: integer
+          format: int32
+        description:
+          nullable: true
+      additionalProperties: false
+    Rating:
+      type: object
+      properties:
+        key:
+          type: string
+          nullable: true
+        count:
+          type: integer
+          format: int32
+        description:
+          nullable: true
+      additionalProperties: false
+    Date:
+      type: object
+      properties:
+        key:
+          type: string
+          nullable: true
+        count:
+          type: integer
+          format: int32
+        description:
+          nullable: true
+      additionalProperties: false
+    DateUpdated:
+      type: object
+      properties:
+        key:
+          type: string
+          nullable: true
+        count:
+          type: integer
+          format: int32
+        description:
+          nullable: true
+      additionalProperties: false
+    SalesCount:
+      type: object
+      properties:
+        key:
+          type: string
+          nullable: true
+        count:
+          type: integer
+          format: int32
+        description:
+          nullable: true
+      additionalProperties: false
+    Cost:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+        min:
+          type: integer
+          format: int32
+        max:
+          type: integer
+          format: int32
+        avg:
+          type: number
+          format: double
+        sum:
+          type: integer
+          format: int32
+      additionalProperties: false
+    CompatibleWith:
+      type: object
+      properties:
+        key:
+          type: string
+          nullable: true
+        count:
+          type: integer
+          format: int32
+        description:
+          nullable: true
+      additionalProperties: false
+    DiscountCount:
+      type: object
+      properties:
+        key:
+          nullable: true
+        count:
+          type: integer
+          format: int32
+        description:
+          nullable: true
+      additionalProperties: false
+    Aggregations:
+      type: object
+      properties:
+        category_root_count:
+          $ref: '#/components/schemas/CategoryRootCount'
+        category:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/Category'
+        platform_root_count:
+          $ref: '#/components/schemas/PlatformRootCount'
+        platform:
+          type: array
+          nullable: true
+          items: {}
+        __internal_software_versions:
+          type: array
+          nullable: true
+          items: {}
+        file_formats:
+          nullable: true
+        files_included:
+          nullable: true
+        tags:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/Tag'
+        colors:
+          nullable: true
+        rating:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/Rating'
+        date:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/Date'
+        date_updated:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/DateUpdated'
+        size:
+          nullable: true
+        sizes:
+          nullable: true
+        sales_count:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/SalesCount'
+        cost:
+          $ref: '#/components/schemas/Cost'
+        length:
+          nullable: true
+        tempo:
+          nullable: true
+        alpha:
+          nullable: true
+        looped:
+          nullable: true
+        resolution:
+          nullable: true
+        vocals_in_audio:
+          nullable: true
+        frame_rate:
+          nullable: true
+        compatible_with:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/CompatibleWith'
+        orientation:
+          nullable: true
+        requires_plugins:
+          nullable: true
+        include_pro_affiliated:
+          nullable: true
+        discount_count:
+          $ref: '#/components/schemas/DiscountCount'
+      additionalProperties: false
+    Rating2:
+      type: object
+      properties:
+        rating:
+          type: number
+          format: double
+        count:
+          type: integer
+          format: int32
+      additionalProperties: false
+    IconWithLandscapePreview:
+      type: object
+      properties:
+        icon_url:
+          type: string
+          nullable: true
+        landscape_url:
+          type: string
+          nullable: true
+      additionalProperties: false
+    LiveSite:
+      type: object
+      properties:
+        url:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ImageUrl:
+      type: object
+      properties:
+        name:
+          nullable: true
+        url:
+          type: string
+          nullable: true
+        width:
+          type: integer
+          format: int32
+        height:
+          type: integer
+          format: int32
+      additionalProperties: false
+    LandscapePreview:
+      type: object
+      properties:
+        landscape_url:
+          type: string
+          nullable: true
+        image_urls:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/ImageUrl'
+      additionalProperties: false
+    Previews:
+      type: object
+      properties:
+        icon_with_landscape_preview:
+          $ref: '#/components/schemas/IconWithLandscapePreview'
+        live_site:
+          $ref: '#/components/schemas/LiveSite'
+        landscape_preview:
+          $ref: '#/components/schemas/LandscapePreview'
+      additionalProperties: false
+    Attribute:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+        value:
+          nullable: true
+      additionalProperties: false
+    Match:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        site:
+          type: string
+          nullable: true
+        classification:
+          type: string
+          nullable: true
+        price_cents:
+          type: integer
+          format: int32
+        number_of_sales:
+          type: integer
+          format: int32
+        author_username:
+          type: string
+          nullable: true
+        author_url:
+          type: string
+          nullable: true
+        url:
+          type: string
+          nullable: true
+        summary:
+          type: string
+          nullable: true
+        rating:
+          $ref: '#/components/schemas/Rating2'
+        updated_at:
+          type: string
+          format: date-time
+        trending:
+          type: boolean
+        previews:
+          $ref: '#/components/schemas/Previews'
+        attributes:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/Attribute'
+        key_features:
+          type: array
+          nullable: true
+          items:
+            type: string
+        image_urls:
+          type: array
+          nullable: true
+          items: {}
+        tags:
+          type: array
+          nullable: true
+          items:
+            type: string
+        discounts:
+          type: array
+          nullable: true
+          items: {}
+      additionalProperties: false
+    Item:
+      type: object
+      additionalProperties: false
+    Metadata:
+      type: object
+      properties:
+        title:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        heading:
+          type: string
+          nullable: true
+      additionalProperties: false
+    SearchIngestedContent:
+      type: object
+      additionalProperties: false
+    ThemeModel:
+      type: object
+      properties:
+        author_exists:
+          nullable: true
+        aggregations:
+          $ref: '#/components/schemas/Aggregations'
+        suggestions:
+          nullable: true
+        matches:
+          type: array
+          nullable: true
+          items:
+            $ref: '#/components/schemas/Match'
+        total_hits:
+          type: integer
+          format: int32
+        item:
+          $ref: '#/components/schemas/Item'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        searchIngestedContent:
+          $ref: '#/components/schemas/SearchIngestedContent'
+        matching_author:
+          nullable: true
+      additionalProperties: false

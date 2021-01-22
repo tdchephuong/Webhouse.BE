@@ -1,0 +1,12 @@
+version: "3.5"
+services:
+  cometosite:
+    container_name: cometosite
+    build:
+      context: .
+    ports:
+      - 3000:3000
+
+networks:
+    default:
+        name: "thdp-network"
