@@ -5,5 +5,6 @@ export interface IThemeForestService {
   getThemeMarketing(page: string): Promise<ThemeModel[]>;
   getThemeEcom(page: number): Promise<ThemeModel[]>;
   getThemeBlog(page: number): Promise<ThemeModel[]>;
+  getScreenshot(link: string, name: string);
 
 }

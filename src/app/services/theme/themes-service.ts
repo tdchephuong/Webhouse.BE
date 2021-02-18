@@ -2,6 +2,7 @@ import { Logger, LoggerFactory } from '../../common';
 import { ThemeModel } from '../../models';
 import { IThemeForestService } from '../contracts';
 import axios from 'axios';
+import { launch } from 'puppeteer';
 
 export class ThemesService implements IThemeForestService {
 
@@ -55,4 +56,27 @@ export class ThemesService implements IThemeForestService {
       this.LOGGER.debug(exception);
     });
   }
+
+  async getScreenshot(link: string, name: string) {
+    const browser = await launch({
+      headless: true,
+      defaultViewport: null,
+      args:['--start-maximized' ]
+    });
+    const context = await browser.createIncognitoBrowserContext();
+    const page = await context.newPage();
+    await page.setViewport({ width: 1366, height: 768});
+    await page.goto(link, {
+      waitUntil: 'load',
+      // Remove the timeout
+      timeout: 0
+  });
+    
+    await page.screenshot({path: `./screenshoot/${name}.png`, fullPage: true});
+
+    // await page.pdf
+
+    await browser.close();
+  }
+
 }

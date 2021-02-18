@@ -17,6 +17,7 @@ export class ThemesRouter extends RestRouter {
 
     this.router.get('/', this.wrapRouteFn(this.themesCtrl, this.themesCtrl.getAll));
     this.router.get('/category', this.wrapRouteFn(this.themesCtrl, this.themesCtrl.getThemeBycategory));
+    this.router.get('/preview', this.wrapRouteFn(this.themesCtrl, this.themesCtrl.getWebsiteScreenShot));
 
     this.router.all('/', this.wrapRouteFn(this.themesCtrl,
       this.themesCtrl.throwMethodNotAllowedError));

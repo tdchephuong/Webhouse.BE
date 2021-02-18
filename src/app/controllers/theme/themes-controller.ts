@@ -49,4 +49,14 @@ export class ThemesController extends RestController {
     // ---- return not found ----------
   }
 
+  async getWebsiteScreenShot(req, res, next): Promise<any> {
+    const {
+      linkPreview,
+      name
+    } = req.body;
+
+    const data = await this.themesService.getScreenshot(linkPreview, name);
+    return this.respond(res, 'successful');
+  }
+
 }
